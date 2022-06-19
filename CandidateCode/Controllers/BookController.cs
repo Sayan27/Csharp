@@ -57,6 +57,30 @@ namespace CandidateCode.Controllers
             return Ok($"Book with id = {id} is removed successfully.");
         }
 
+        [HttpPut]
+        [Route("/api/book/updatebooks")]
+          public IActionResult UpdateBook(int id, [FromBody] UpdateViewModel updateViewModel)
+        {
+            Book book = new Book
+            {
+                BookName = updateViewModel.BookName,
+                AuthorName = updateViewModel.AuthorName,
+
+                Price = updateViewModel.Price,
+               
+            };
+
+            bool isBookUpdated = _bookRepository.UpdateBook(id, book);
+
+            if (!isBookUpdated)
+            {
+                return NotFound($"Book with id = {id} is not found.");
+            }
+            return Ok($"Book with id = {id} is updated successfully.");
+
+        }
+
+
 
 
 

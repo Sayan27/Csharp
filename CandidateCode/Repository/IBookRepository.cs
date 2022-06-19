@@ -10,7 +10,7 @@ namespace CandidateCode.Repository
         Book AddBook(Book book);
         List<Book> GetAllBooks();
         bool DeleteBook(int id);
-       // bool UpdateBook(int id, Book book);
+        bool UpdateBook(int id, Book book);
 
 
     }

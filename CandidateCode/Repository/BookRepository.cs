@@ -41,6 +41,26 @@ namespace CandidateCode.Repository
             return isBookRemoved;
         }
 
+        public bool UpdateBook(int id, Book book)
+        {
+            bool isBookUpdated = false;
+            var bookTobeUpdated = _applicationDbcontext.Books.FirstOrDefault(p => p.Id == id);
+            if (bookTobeUpdated != null)
+            {
+                bookTobeUpdated.BookName = book.BookName;
+                bookTobeUpdated.AuthorName = book.AuthorName;
+                bookTobeUpdated.Price = book.Price;
+
+                
+                _applicationDbcontext.SaveChanges();
+                isBookUpdated = true;
+
+            }
+            return isBookUpdated;
+
+        }
+
+
     
 }
 
