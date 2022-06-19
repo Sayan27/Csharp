@@ -45,6 +45,19 @@ namespace CandidateCode.Controllers
         return Ok(books);
 
     }
+    [HttpDelete]
+    [Route("/api/book/deletebooks")]
+      public IActionResult DeleteBook(int id)
+        {
+            bool isBookRemoved = _bookRepository.DeleteBook(id);
+            if (!isBookRemoved)
+            {
+                return NotFound($"Book with id = {id} is not found.");
+            }
+            return Ok($"Book with id = {id} is removed successfully.");
+        }
+
+
 
 
 

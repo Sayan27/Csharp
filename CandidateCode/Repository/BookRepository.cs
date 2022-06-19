@@ -27,5 +27,21 @@ namespace CandidateCode.Repository
         {
             return _applicationDbcontext.Books.ToList();
         }
-    }
+
+         public bool DeleteBook(int id)
+        {
+            bool isBookRemoved = false;
+            var bookTobeRemoved = _applicationDbcontext.Books.FirstOrDefault(p => p.Id == id);
+            if (bookTobeRemoved != null)
+            {
+              _applicationDbcontext.Books.Remove(bookTobeRemoved);
+               _applicationDbcontext.SaveChanges();
+                isBookRemoved = true;
+            }
+            return isBookRemoved;
+        }
+
+    
+}
+
 }
